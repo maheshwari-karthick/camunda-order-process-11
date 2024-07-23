@@ -1,0 +1,94 @@
+{
+  "components": [
+    {
+      "text": "### Check the failed payment",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_1nmxcos",
+        "columns": null
+      },
+      "id": "Field_0ij0d6g"
+    },
+    {
+      "label": "customerId",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_06772ul",
+        "columns": null
+      },
+      "id": "Field_04kqei1",
+      "key": "textfield_fg8fgh"
+    },
+    {
+      "label": "cardNumber",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_07fcham",
+        "columns": null
+      },
+      "id": "Field_05xl4br",
+      "key": "textfield_ick6j"
+    },
+    {
+      "label": "expiryDate",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0kl24pj",
+        "columns": null
+      },
+      "id": "Field_0nqs3lh",
+      "key": "textfield_y6khyv"
+    },
+    {
+      "label": "CVC",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_10ijlbp",
+        "columns": null
+      },
+      "id": "Field_0yvi64o",
+      "key": "textfield_9bgl06"
+    },
+    {
+      "label": "orderTotal",
+      "type": "number",
+      "layout": {
+        "row": "Row_0cq54y1",
+        "columns": null
+      },
+      "id": "Field_1wp3eu9",
+      "key": "number_bhvk4"
+    },
+    {
+      "label": "openAmount",
+      "type": "number",
+      "layout": {
+        "row": "Row_02stzxg",
+        "columns": null
+      },
+      "id": "Field_0xlrhb8",
+      "key": "number_w0k74q"
+    },
+    {
+      "label": "errorResolved",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_078g2ni",
+        "columns": null
+      },
+      "id": "Field_0mljajz",
+      "key": "checkbox_vp0uf",
+      "disabled": false
+    }
+  ],
+  "type": "default",
+  "id": "checkPaymentDataForm",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.24.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.21.0",
+  "schemaVersion": 16
+}

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1l8rrdv" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.24.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.21.0">
+  <bpmn:process id="OrderProcess" name="Order process" isExecutable="true" camunda:historyTimeToLive="30">
+    <bpmn:sequenceFlow id="Flow_1589kxr" sourceRef="StartEvent_1" targetRef="Activity_004p5s9" />
+    <bpmn:startEvent id="StartEvent_1" name="Order received">
+      <bpmn:outgoing>Flow_1589kxr</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_170imts" messageRef="Message_08cojd0" />
+    </bpmn:startEvent>
+    <bpmn:sendTask id="Activity_004p5s9" name="Invoke payment" camunda:type="external" camunda:topic="paymentRequest">
+      <bpmn:incoming>Flow_1589kxr</bpmn:incoming>
+      <bpmn:outgoing>Flow_0jq8s8o</bpmn:outgoing>
+    </bpmn:sendTask>
+    <bpmn:sequenceFlow id="Flow_0jq8s8o" sourceRef="Activity_004p5s9" targetRef="Event_1dyiger" />
+    <bpmn:intermediateCatchEvent id="Event_1dyiger" name="Payment completed">
+      <bpmn:incoming>Flow_0jq8s8o</bpmn:incoming>
+      <bpmn:outgoing>Flow_0tk6vfe</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_1lzz4mk" messageRef="Message_2tr2s35" />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:endEvent id="Event_1wksqir" name="Order completed">
+      <bpmn:incoming>Flow_0tk6vfe</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0tk6vfe" sourceRef="Event_1dyiger" targetRef="Event_1wksqir" />
+  </bpmn:process>
+  <bpmn:message id="Message_2tr2s35" name="paymentCompletedMessage" />
+  <bpmn:message id="Message_08cojd0" name="OrderReceived" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="OrderProcess">
+      <bpmndi:BPMNShape id="Event_1iq9uo8_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="172" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="154" y="145" width="73" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0ww0etw_di" bpmnElement="Activity_004p5s9">
+        <dc:Bounds x="260" y="80" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0n7xb6n_di" bpmnElement="Event_1dyiger">
+        <dc:Bounds x="412" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="405" y="145" width="51" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1wksqir_di" bpmnElement="Event_1wksqir">
+        <dc:Bounds x="502" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="479" y="145" width="82" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1589kxr_di" bpmnElement="Flow_1589kxr">
+        <di:waypoint x="208" y="120" />
+        <di:waypoint x="260" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0jq8s8o_di" bpmnElement="Flow_0jq8s8o">
+        <di:waypoint x="360" y="120" />
+        <di:waypoint x="412" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0tk6vfe_di" bpmnElement="Flow_0tk6vfe">
+        <di:waypoint x="448" y="120" />
+        <di:waypoint x="502" y="120" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
